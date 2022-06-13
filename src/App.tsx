@@ -1,25 +1,23 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { AssetPriceContext, useAssetPrice } from './Contexts/AssetPriceContext';
+import EthBalance from './Ethereum/USD/EthBalance';
 
 function App() {
+
+	const assetPrice = useAssetPrice();
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <AssetPriceContext.Provider value={assetPrice}>
+	   <div>
+		   <h1>
+		   ChainLink Data Feed Example
+		   </h1>
+		   <EthBalance />
+	   </div>
+	   </AssetPriceContext.Provider>
   );
 }
 
